@@ -35,7 +35,9 @@ namespace Zosima
                 return client;
             });
 
-            newClient.ToProperty(this, x => x.CurrentClient, out currentClient);
+            newClient
+                .Do(x => RxApp.MutableResolver.RegisterConstant(x, typeof(MobileServiceClient)))
+                .ToProperty(this, x => x.CurrentClient, out currentClient);
         }
     }
 }

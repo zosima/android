@@ -17,6 +17,7 @@ namespace Zosima
 {
     public class DeviceRegistration
     {
+        public string Id { get; set; }
         public string Token { get; set; }
     }
 
