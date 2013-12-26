@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Reactive;
 using System.Reactive.Linq;
+using System.Reactive.Threading.Tasks;
 using ReactiveUI;
 using Akavache;
 using Microsoft.WindowsAzure.MobileServices;
 using System.Threading.Tasks;
+using Windows.Data.Json;
 
 namespace Zosima
 {
@@ -22,30 +24,15 @@ namespace Zosima
             Login = new ReactiveCommand();
 
             var newClient = Login.RegisterAsyncTask<MobileServiceClient>(async _ => {
-                var loginInfo = default(LoginInfo);
                 var client = new MobileServiceClient(MobileSiteInfo.SiteUrl, MobileSiteInfo.SiteToken);
+                var user = default(MobileServiceUser);
 
-            retry:
-                loginInfo = await BlobCache.Secure.GetLoginAsync().Catch(Observable.Return(default(LoginInfo)));
-
-                if (loginInfo == null) {
-                    // NB: If this dies we're going to let it escape out to 
-                    // ThrownExceptions.
-                    var user = await requestInteractiveLogin(client);
-
-                    await BlobCache.Secure.SaveLogin("user", user.MobileServiceAuthenticationToken);
-                    return client;
+                while (user == null) {
+                    user = await requestInteractiveLogin(client).ToObservable()
+                        .LoggedCatch(this, Observable.Return(default(MobileServiceUser)), "Couldn't log in interactively");
                 }
 
-                try {
-                    await client.LoginAsync(loginInfo.Password);
-                    return client;
-                } catch (Exception ex) {
-                    this.Log().WarnException("Failed to log in using saved info", ex);
-                }
-
-                await BlobCache.Secure.EraseLogin();
-                goto retry;
+                return client;
             });
 
             newClient.ToProperty(this, x => x.CurrentClient, out currentClient);

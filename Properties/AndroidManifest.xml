@@ -3,4 +3,5 @@
 	<uses-sdk />
 	<application android:label="Zosima">
 	</application>
+	<uses-permission android:name="android.permission.INTERNET" />
 </manifest>
