@@ -28,8 +28,11 @@ namespace Zosima
                 var user = default(MobileServiceUser);
 
                 while (user == null) {
-                    user = await requestInteractiveLogin(client).ToObservable()
-                        .LoggedCatch(this, Observable.Return(default(MobileServiceUser)), "Couldn't log in interactively");
+                    try {
+                        user = await requestInteractiveLogin(client);
+                    } catch (Exception ex) {
+                        this.Log().WarnException("Interactive login failed!", ex);
+                    }
                 }
 
                 return client;

@@ -32,6 +32,8 @@ using Android.App;
 // This permission is necessary only for Android 4.0.3 and below.
 [assembly: UsesPermission(Name = "android.permission.GET_ACCOUNTS")]
 
+[assembly: UsesPermission(Name = "android.permission.USE_CREDENTIALS")]
+
 // Need to access the internet for GCM
 [assembly: UsesPermission(Name = "android.permission.INTERNET")]
 
