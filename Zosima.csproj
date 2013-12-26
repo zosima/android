@@ -99,6 +99,7 @@
     <Compile Include="Views\LoginActivity.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="SharedCode\SiteToken.cs" />
+    <Compile Include="Models\PushNotifications.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -115,5 +116,6 @@
     <Folder Include="Views\" />
     <Folder Include="ViewModels\" />
     <Folder Include="SharedCode\" />
+    <Folder Include="Models\" />
   </ItemGroup>
 </Project>
