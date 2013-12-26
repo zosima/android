@@ -1,14 +1,27 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="ViewModels/LoginViewModel.cs">
     <Files>
-      <File FileName="MainActivity.cs" Line="21" Column="33" />
+      <File FileName="Views/LoginActivity.cs" Line="25" Column="1" />
+      <File FileName="SharedCode/SiteToken.cs" Line="5" Column="5" />
+      <File FileName="ViewModels/LoginViewModel.cs" Line="33" Column="1" />
+      <File FileName="../azure-mobile-services/sdk/xamarin/android/src/Microsoft.Azure.Zumo.Android/Core/MobileServiceClient.Managed.cs" Line="88" Column="1" />
+      <File FileName="Properties/AndroidManifest.xml" Line="7" Column="11" />
+      <File FileName="../azure-mobile-services/sdk/xamarin/android/src/Microsoft.Azure.Zumo.Android/Core/MobileServiceClient.cs" Line="233" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Zosima" expanded="True">
-            <Node name="ComponentReferenceFolder" selected="True" />
+            <Node name="Resources" expanded="True">
+              <Node name="layout" expanded="True">
+                <Node name="Login.axml" selected="True" />
+              </Node>
+              <Node name="values" expanded="True" />
+            </Node>
+            <Node name="SharedCode" expanded="True" />
+            <Node name="ViewModels" expanded="True" />
+            <Node name="Views" expanded="True" />
           </Node>
         </State>
       </Pad>
@@ -18,4 +31,5 @@
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.Zosima AndroidDeviceId-Debug="192.168.56.102:5555" MonoForAntroid.PreferredDevice="3.7in WVGA (Nexus One)" />
 </Properties>
